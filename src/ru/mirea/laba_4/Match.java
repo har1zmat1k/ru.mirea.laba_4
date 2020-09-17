@@ -106,7 +106,6 @@ public class Match extends JFrame {
         menuBar.add(jTextAreaMenu);
         this.setJMenuBar(menuBar);
 
-
         //////// Прослушка мыши
         this.addMouseListener(new MouseListener()
         {
@@ -116,7 +115,6 @@ public class Match extends JFrame {
             public void mouseEntered(MouseEvent a) {}
             public void mouseReleased(MouseEvent a) {}
             public void mousePressed(MouseEvent a) {}
-
         });
         //////////////////////////
 
@@ -127,6 +125,16 @@ public class Match extends JFrame {
             }
         });
 
+    }
+
+    void newMatch(){
+        firstGroup = 0;
+        secondGroup = 0;
+        statusLabel.setText("Result: " + firstGroup + " X " + secondGroup);
+        scoreLabel.setText("Last Scorer: N/A");
+        headerLabel.setText("DRAW");
+        itemsLabel.setText("");
+        lbl.setText("");
     }
 
     class ButtonListener implements ActionListener {
@@ -151,7 +159,13 @@ public class Match extends JFrame {
 
     class MenuItemListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            itemsLabel.setText("Clicked: " + e.getActionCommand());
+            if(e.getActionCommand().equals("New")){
+                newMatch();
+            }
+            else {
+                itemsLabel.setText("Clicked: " + e.getActionCommand());
+            }
+
         }
     }
 }

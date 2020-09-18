@@ -17,10 +17,12 @@ public class Match extends JFrame {
 
     public Match(){
         setLayout(new GridLayout(3,3));
+
         for(int i = 0 ; i < pnl.length ; i++) {
             pnl[i] = new JPanel();
             add(pnl[i]);
         }
+
         headerLabel = new JLabel("Winner: DRAW",JLabel.CENTER );
         statusLabel = new JLabel("Result: 0 X 0",JLabel.CENTER);
         statusLabel.setSize(350,200);
@@ -38,7 +40,6 @@ public class Match extends JFrame {
         pnl[3].add(firstButton, BorderLayout.CENTER);
         pnl[5].setLayout(new BorderLayout());
         pnl[5].add(secondButton, BorderLayout.CENTER);
-        setSize(800,500);
         pnl[1].setLayout(new BorderLayout());
         pnl[1].add(headerLabel);
         pnl[4].setLayout(new BorderLayout());
@@ -49,6 +50,7 @@ public class Match extends JFrame {
         pnl[6].add(itemsLabel);
         pnl[0].setLayout(new BorderLayout());
         pnl[0].add(lbl, BorderLayout.NORTH);
+        setSize(800,500);
 
         JMenu matchMenu = new JMenu("Match");
         JMenu textFieldMenu = new JMenu("Text field");
@@ -87,7 +89,6 @@ public class Match extends JFrame {
         cutMenuItem.addActionListener(menuItemListener);
         copyMenuItem.addActionListener(menuItemListener);
         pasteMenuItem.addActionListener(menuItemListener);
-        ///////////
 
         /// Добавления "подменю" в меню
         matchMenu.add(newMenuItem);
@@ -116,7 +117,6 @@ public class Match extends JFrame {
             public void mouseReleased(MouseEvent a) {}
             public void mousePressed(MouseEvent a) {}
         });
-        //////////////////////////
 
         /////Для отключения процессов в случе прерывания работы программы
         this.addWindowListener(new WindowAdapter() {
@@ -162,10 +162,12 @@ public class Match extends JFrame {
             if(e.getActionCommand().equals("New")){
                 newMatch();
             }
+            else if(e.getActionCommand().equals("Exit")){
+                System.exit(0);
+            }
             else {
                 itemsLabel.setText("Clicked: " + e.getActionCommand());
             }
-
         }
     }
 }
